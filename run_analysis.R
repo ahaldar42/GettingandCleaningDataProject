@@ -117,4 +117,4 @@ setnames(TidyData, old=c("Group.1","Group.2"), new=c("ActivityId", "SubjectId"))
 TidyData    <- merge(activityType,TidyData,by='ActivityId',all.x=TRUE)
 
 # Export the tidyData set 
-write.table(TidyData, './TidyData.txt',row.names=TRUE,sep='\t')
+write.table(TidyData, './TidyData.txt',row.names=FALSE,sep='\t')

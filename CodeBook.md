@@ -1,10 +1,9 @@
 ##Getting and Cleaning Data Project
 
-Amrita Haldar
 
 ###Description
 
-Additional information about the variables, data and transformations used in the course project for the Johns Hopkins University"Getting and Cleaning Data" course.
+Additional information about the variables, data and transformations used in the course project for the Johns Hopkins University "Getting and Cleaning Data" course.
 
 ###Data Set Information
 
@@ -19,6 +18,8 @@ For each record it is provided:
 - A 561-feature vector with time and frequency domain variables. 
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
+
+A full description is available at the site where the data was obtained:[link] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
 The data has been processed by the following steps, which has been divided into five sections for better clarity.
 

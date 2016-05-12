@@ -19,12 +19,10 @@ For each record it is provided:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-A full description of the data is available at the site where the data was obtained: [UCI Machine Learning Repository] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
+**The data has been processed by the following steps, which has been divided into five steps as per instructions.**
 
-**The data has been processed by the following steps, which has been divided into five sections for better clarity.**
-
-**Section 1.** 
+**Step 1.** 
 Merge the training and the test sets to create one data set.
 
 After setting the source directory for the files, read into tables the data located in
@@ -39,23 +37,28 @@ x_test.txt
 y_test.txt
 Assign column names and merge to create one data set-FinalData
 
-**Section 2.** 
+**Step 2.** 
 Extract only the measurements on the mean and standard deviation for each measurement.
 
 Create a logical vector that contains TRUE values for the ActivityId,SubjectID, Mean and Std Deviation columns and FALSE values for the others. 
 Subset this data to keep only the necessary columns.
 
-**Section 3.** 
+**Step 3.** 
 Use descriptive activity names to name the activities in the data set
 
 Combine data subset with the activityType table to include the descriptive activity names
 
-**Section 4.** 
+**Step 4.** 
 Appropriately label the data set with descriptive activity names.
 
 Use gsub function to clean up the data labels according to Tidy Data guidelines.
 
-**Section 5.** 
+**Step 5.** 
 Create a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 Create a data set with the average of each veriable for each activity and subject.
+
+###References:
+1. A full description of the data is available at the site where the data was obtained: [UCI Machine Learning Repository] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+2. Article on wearable computing: [Link] (http://www.insideactivitytracking.com/data-science-activity-tracking-and-the-battle-for-the-worlds-top-sports-brand/)
+3. Source data: [Link] (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)

@@ -1,6 +1,8 @@
 library("data.table")
 
+################################################################################
 #1.Merges the training and the test sets to create one data set.
+################################################################################
 
 #Set working directory to the location of the Dataset
 setwd("C:/Users/ahaldar/Desktop/Coursera")
@@ -30,7 +32,7 @@ colnames(xTrainAct)     <- features[,2]
 
 
 # Create the final training set by merging (via cbind) yTrain, subjectTrain, and xTrain
-TrainingData <- cbind(yTrainAct,SubjectTrain,xTrainAct) #ActivityId, SubjectId, V1-V561
+TrainData <- cbind(yTrainAct,SubjectTrain,xTrainAct) #ActivityId, SubjectId, V1-V561
 
 
 # Read in the test data from files
@@ -48,11 +50,13 @@ colnames(xTestAct)    <- features[,2]
 TestData <- cbind(yTestAct,SubjectTest,xTestAct) #ActivityId, SubjectId, V1-V561
 
 # Combine training and test data via rbind to create a final data set
-FinalData <- rbind(TrainingData,TestData) #10299 obs of 563 variables
+FinalData <- rbind(TrainData,TestData) #10299 obs of 563 variables
 
 
-
+#############################################################################################
 # 2. Extract only the measurements on the mean and standard deviation for each measurement.
+#############################################################################################
+
 setnames(features, names(features), c("FeatureNum", "FeatureName"))
 
 # Create a logicalVector with TRUE values for Id, Mean & StdDev columns and FALSE for others
@@ -63,9 +67,9 @@ LogicalVector   <- c(T,T,LogicalVector1)#Accounting for ActivityId and SubjectId
 FinalData       <- data.table(FinalData)
 FinalDataSubSet <- subset(FinalData,,select=LogicalVector)
 
-
-
+################################################################################
 # 3. Use descriptive activity names to name the activities in the data set
+################################################################################
 
 # Merge the finalData set with the acitivityType table to include descriptive activity names
 FinalData <- merge(FinalDataSubSet,activityType,by='ActivityId',all.x=TRUE) #finalData$activityType
@@ -79,21 +83,21 @@ for (i in 1:length(colNames))
         colNames[i] <- gsub("\\()","",colNames[i])#getting rid of ()
         colNames[i] <- gsub("-std","StdDev",colNames[i])
         colNames[i] <- gsub("-mean","Mean",colNames[i])
-        colNames[i] <- gsub("^(t)","Time",colNames[i]) 
-        colNames[i] <- gsub("^(f)","Freq",colNames[i])
+        colNames[i] <- gsub("^(t)","Time",colNames[i]) #time to Time
+        colNames[i] <- gsub("^(f)","Freq",colNames[i]) #freq to Freq
         colNames[i] <- gsub("([Gg]ravity)","Gravity",colNames[i])
         colNames[i] <- gsub("([Bb]ody[Bb]ody|[Bb]ody)","Body",colNames[i])
         colNames[i] <- gsub("[Gg]yro","Gyro",colNames[i])
         colNames[i] <- gsub("AccMag","AccMagnitude",colNames[i])
         colNames[i] <- gsub("([Bb]odyaccjerkmag)","BodyAccJerkMagnitude",colNames[i])
         colNames[i] <- gsub("JerkMag","JerkMagnitude",colNames[i])
-        colNames[i] <- gsub("GyroMag","GyroMagnitude",colNames[i])
 }
 # Renaming the columns  
 colnames(FinalData) <- colNames
 
-
+######################################################################################################################
 # 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
+######################################################################################################################
 
 # Create a new table "FinalDataNoActivityType" w/o ActivityType column, as we will avg the rest
 LogicalVector2           <- (names(FinalData) != 'ActivityType')

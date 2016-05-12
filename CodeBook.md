@@ -3,7 +3,7 @@
 
 ###Description
 
-Additional information about the variables, data and transformations used in the course project for the Johns Hopkins University "Getting and Cleaning Data" course.
+This code book describes the variables and data in addition to transformations performed to clean up the data used in the course project for the Johns Hopkins University "Getting and Cleaning Data" course.
 
 ###Data Set Information
 

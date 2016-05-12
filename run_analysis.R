@@ -21,7 +21,7 @@ setnames(features, names(features), c("FeatureNum", "FeatureName"))
 #yTrainAct: Read activity files whether 1..6 ie walking/sleeping etc.
 #xTrainAct: Contains the measurements V1-V561
 
-# Read in the train data from files
+# Read in the train data from files-extract as data frames
 SubjectTrain<- read.table(file.path(dir_path,"train","subject_train.txt"))#reads subject_train.txt
 xTrainAct   <- read.table(file.path(dir_path,"train", "X_train.txt"))     #reads x_train.txt
 yTrainAct   <- read.table(file.path(dir_path,"train", "Y_train.txt"))     #reads y_train.txt
@@ -34,9 +34,9 @@ colnames(xTrainAct)     <- features[,2]
 
 # Create the final training set by merging (via cbind) yTrain, subjectTrain, and xTrain
 TrainData <- cbind(yTrainAct,SubjectTrain,xTrainAct) #ActivityId, SubjectId, V1-V561
+str(TrainData)
 
-
-# Read in the test data from files
+# Read in the test data from files-extract as data frames
 SubjectTest<- read.table(file.path(dir_path,"test","subject_test.txt"))#reads subject_test.txt
 xTestAct   <- read.table(file.path(dir_path,"test", "X_test.txt"))     #reads x_test.txt
 yTestAct   <- read.table(file.path(dir_path,"test", "Y_test.txt"))     #reads y_test.txt
@@ -46,13 +46,13 @@ colnames(yTestAct)    <- "ActivityId"
 colnames(SubjectTest) <- "SubjectId"
 colnames(xTestAct)    <- features[,2] 
 
-
 # Create the final test set by merging (via cbind) xTest, yTest and subjectTest 
 TestData <- cbind(yTestAct,SubjectTest,xTestAct) #ActivityId, SubjectId, V1-V561
+str(TestData)
 
 # Combine training and test data via rbind to create a final data set
 FinalData <- rbind(TrainData,TestData) #10299 obs of 563 variables
-
+str(FinalData)
 
 #############################################################################################
 # 2. Extract only the measurements on the mean and standard deviation for each measurement.
@@ -90,6 +90,8 @@ for (i in 1:length(colNames))
         colNames[i] <- gsub("([Bb]odyaccjerkmag)","BodyAccJerkMagnitude",colNames[i])
         colNames[i] <- gsub("JerkMag","JerkMagnitude",colNames[i])
 }
+#I am sure there should be a better way of doing this, but this works.
+
 # Renaming the columns  
 colnames(FinalData) <- colNames
 
@@ -97,16 +99,16 @@ colnames(FinalData) <- colNames
 # 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
 ######################################################################################################################
 
-# Create a new table "FinalDataNoActivityType" w/o ActivityType column, as we will avg the rest
+# Create a new table "FinalDataSansActType" w/o ActivityType column, as we will average the rest of the columns
 LogicalVector2           <- (names(FinalData) != 'ActivityType')
-FinalDataNoActivityType  <- subset(FinalData,,select=LogicalVector2)
+FinalDataSansActType  <- subset(FinalData,,select=LogicalVector2)
 
 # Summarizing the table to include the mean of each variable for each activity and each subject
-LogicalVector4<-names(FinalDataNoActivityType) != c('ActivityId','SubjectId')
-X <-subset(FinalDataNoActivityType,,select=LogicalVector4)
+LogicalVector4<-names(FinalDataSansActType) != c('ActivityId','SubjectId')
+X <-subset(FinalDataSansActType,,select=LogicalVector4)
 
-activityId <- FinalDataNoActivityType$ActivityId
-subjectId  <- FinalDataNoActivityType$SubjectId
+activityId <- FinalDataSansActType$ActivityId
+subjectId  <- FinalDataSansActType$SubjectId
 TidyData   <- aggregate(x=X,
                         by=list(activityId,subjectId),
                         FUN=mean)

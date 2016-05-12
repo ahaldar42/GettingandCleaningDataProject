@@ -75,7 +75,7 @@ FinalData <- merge(FinalDataSubSet,activityType,by='ActivityId',all.x=TRUE) #fin
 # Updating the colNames vector to include the new column names after merge
 colNames  <- colnames(FinalData) 
 
-# Cleaning up the variable names acc to Tidy Data guidelines 
+# Tidy up the variable names 
 for (i in 1:length(colNames)) 
 {
         colNames[i] <- gsub("\\()","",colNames[i])#getting rid of ()

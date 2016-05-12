@@ -1,14 +1,12 @@
-﻿## This is a markdown file
-
-Getting and Cleaning Data Project
+#Getting and Cleaning Data Project
 
 Amrita Haldar
 
-Description
+##Description
 
 Additional information about the variables, data and transformations used in the course project for the Johns Hopkins University"Getting and Cleaning Data" course.
 
-Data Set Information
+##Data Set Information
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
@@ -24,7 +22,7 @@ For each record it is provided:
 
 The data has been processed by the following steps, which has been divided into five sections for better clarity
 
-Section 1. Merge the training and the test sets to create one data set.
+**Section 1.** Merge the training and the test sets to create one data set.
 
 After setting the source directory for the files, read into tables the data located in
 
@@ -38,7 +36,7 @@ x_test.txt
 y_test.txt
 Assign column names and merge to create one data set-FinalData
 
-Section 2. Extract only the measurements on the mean and standard deviation for each measurement.
+###Section 2. Extract only the measurements on the mean and standard deviation for each measurement.
 
 Create a logical vector that contains TRUE values for the ActivityId,SubjectID, Mean and Std Deviation columns and FALSE values for the others. 
 Subset this data to keep only the necessary columns.

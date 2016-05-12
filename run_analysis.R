@@ -15,6 +15,7 @@ files_list
 activityType <- read.table(file.path(dir_path,"activity_labels.txt"),header=FALSE) #imports activity_labels.txt
 features     <- read.table(file.path(dir_path,"features.txt"),header=FALSE)#imports features.txt
 colnames(activityType)  <- c('ActivityId','ActivityType')
+setnames(features, names(features), c("FeatureNum", "FeatureName"))
 
 #Subject  : Each row identifies the subject who performed the activity
 #yTrainAct: Read activity files whether 1..6 ie walking/sleeping etc.
@@ -56,9 +57,6 @@ FinalData <- rbind(TrainData,TestData) #10299 obs of 563 variables
 #############################################################################################
 # 2. Extract only the measurements on the mean and standard deviation for each measurement.
 #############################################################################################
-
-setnames(features, names(features), c("FeatureNum", "FeatureName"))
-
 # Create a logicalVector with TRUE values for Id, Mean & StdDev columns and FALSE for others
 LogicalVector1 <- grepl("-std..|-mean..", features$FeatureName) & !(grepl("-meanF..", features$FeatureName))#Don't want meanFreq
 LogicalVector   <- c(T,T,LogicalVector1)#Accounting for ActivityId and SubjectId

@@ -19,7 +19,8 @@ For each record it is provided:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-A full description is available at the site where the data was obtained:[link] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+A full description of the data is available at the site where the data was obtained: [UCI Machine Learning Repository] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+
 
 **The data has been processed by the following steps, which has been divided into five sections for better clarity.**
 

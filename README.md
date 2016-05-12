@@ -1,6 +1,5 @@
 #Getting and Cleaning Data Project
 
-Amrita Haldar
 
 Repo created for the submission of the course project for the Johns Hopkins University "Getting and Cleaning Data" course.
 
@@ -17,7 +16,7 @@ Note that on line 6 of run_analysis.R, path of the working directory has be to s
 
 The following is a summary description of the project instructions
 
-You should create one R script called run_analysis.R that does the following.
+You should create one R script called **run_analysis.R** that does the following.
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -27,4 +26,4 @@ You should create one R script called run_analysis.R that does the following.
 
 ##Additional Information
 
-You can find additional information about the variables, data and transformations in the CodeBook.MD file.
+You can find additional information about the variables, data and transformations in the **CodeBook.MD** file.

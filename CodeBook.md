@@ -21,7 +21,7 @@ For each record it is provided:
 
 A full description is available at the site where the data was obtained:[link] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
-The data has been processed by the following steps, which has been divided into five sections for better clarity.
+**The data has been processed by the following steps, which has been divided into five sections for better clarity.**
 
 **Section 1.** 
 Merge the training and the test sets to create one data set.
